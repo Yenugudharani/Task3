@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Webpage</title>
+  <style>
+    body {
+      margin: 0;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #2196f3;
+      color: white;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    header h1 {
+      margin-bottom: 0;
+    }
+
+    .tagline {
+      margin-top: 0;
+      color: #e0f7fa;
+    }
+
+    img {
+      margin-top: 20px;
+      border-radius: 8px;
+    }
+
+    section {
+      margin-top: 20px;
+    }
+
+    a {
+      color: #fff59d;
+    }
+
+    form, .todo {
+      margin-top: 30px;
+      background-color: #1976d2;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    input, textarea {
+      width: 80%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: #64b5f6;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 5px;
+      color: black;
+    }
+
+    .error {
+      color: #ffcccb;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Welcome to My Webpage</h1>
+      <p class="tagline">Learning HTML, CSS, and JavaScript</p>
+    </header>
+
+    <img src="https://picsum.photos/300" alt="A Beautiful Image" />
+
+    <section>
+      <p>This is a simple and beautifully styled webpage using clean design.</p>
+      <p>Visit <a href="https://www.google.com" target="_blank">Google</a> for more info.</p>
+    </section>
+
+    <!-- Contact Form -->
+    <form id="contactForm">
+      <h2>Contact Me</h2>
+      <input type="text" id="name" placeholder="Your Name"><br>
+      <input type="email" id="email" placeholder="Your Email"><br>
+      <textarea id="message" rows="4" placeholder="Your Message"></textarea><br>
+      <div class="error" id="error-message"></div>
+      <button type="submit">Submit</button>
+    </form>
+
+    <!-- To-do List -->
+    <div class="todo">
+      <h2>To-do List</h2>
+      <input type="text" id="taskInput" placeholder="Enter a task">
+      <button onclick="addTask()">Add Task</button>
+      <ul id="taskList"></ul>
+    </div>
+  </div>
+
+  <script>
+    // Contact Form Validation
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const errorMessage = document.getElementById("error-message");
+
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (!name || !email || !message) {
+        errorMessage.textContent = "Please fill in all fields.";
+        return;
+      }
+
+      if (!email.match(emailPattern)) {
+        errorMessage.textContent = "Invalid email format.";
+        return;
+      }
+
+      // If valid, replace the current content with a new page
+      document.body.innerHTML = `
+        <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif; background-color: #2196f3; color: white;">
+          <h1>Thank You, ${name}!</h1>
+          <p>Your message has been submitted successfully. 😊</p>
+          <p>We’ll get back to you at <strong>${email}</strong>.</p>
+        </div>
+      `;
+    });
+
+    // To-do List Functionality
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const taskText = taskInput.value.trim();
+
+      if (!taskText) {
+        alert("Please enter a task.");
+        return;
+      }
+
+      const taskList = document.getElementById("taskList");
+      const li = document.createElement("li");
+      li.textContent = taskText;
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = " ❌";
+      deleteBtn.style.marginLeft = "10px";
+      deleteBtn.onclick = () => li.remove();
+      li.appendChild(deleteBtn);
+
+      taskList.appendChild(li);
+      alert("✅ Task added successfully: " + taskText);
+      taskInput.value = "";
+    }
+  </script>
+</body>
+</html>
