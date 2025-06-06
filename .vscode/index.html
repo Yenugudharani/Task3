@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Quiz or a Joke</title>
+    <!-- This line tells the HTML to use your CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-container">
+        <h1>Web Dev Quiz or a Joke</h1>
+
+        <!-- Quiz Section -->
+        <div class="quiz-container">
+            <p id="question-text">Question goes here...</p>
+            <div id="answer-buttons" class="answer-options">
+                <!-- Buttons are added here by JavaScript -->
+            </div>
+            <button id="next-btn" class="action-btn">Next</button>
+        </div>
+
+        <div class="divider">OR</div>
+
+        <!-- Joke Section -->
+        <div class="joke-container">
+            <button id="getJokeBtn" class="action-btn">Get a Joke</button>
+            <div id="jokeDisplay" class="joke-box">
+                <p>Click the button above to get a programming joke!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- This line tells the HTML to use your JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
